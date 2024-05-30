@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interpolacion</title>
+    </head>
+    <body>
+        <div class="contenedor">
+            <h1 for="nombre">Seleccione el tipo de interpolacion que desea: </h1>
+        </div>
+       
+
+        <div id="menu">
+            <ul class="nav">
+                <li><a href="#Conjuntos">Seleccione la interpolacion que desea</a>
+                    <ul>
+                        <li><a href="lineal.html">Interpolación Lineal</a></li>
+                        <li><a href="cuadratica.html">Interpolación cuadrática</a></li>
+                        <li><a href="polinomio.html">Polinomios de interpolación de Lagrange</a></li>
+                    </ul>
+                </li>
+                                       
+            </ul>
+        </div>
+        <div id="imagen">
+            <img src="inter.jpg">
+        </div>
+        <style>
+            .contenedor{
+                background: #ffc4a6;
+                padding: 1em;
+                text-align: center;
+                color: white;
+            }
+            body{
+                text-align: center;
+            }
+            #menu {
+                width: 500px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+
+            ul, ol{
+                list-style: none;
+            }
+            .nav li a {
+                background-color: #ff8c91;
+                color: #fff;
+                text-decoration: none;
+                padding: 10px 15px;
+                display: block;
+            }
+            .nav li a:hover{
+                background-color: #ffc4a6;
+            }
+            .nav > li {
+                float: left;
+            }
+            .nav li ul {
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .nav li:hover > ul {
+                display: block;
+            }
+            .nav li ul li{
+                position: relative;
+            }
+            .nav li ul li ul {
+                right: -140px;
+                top: 0px;
+            }
+            #imagen{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0px;
+                height: 100vh;
+            }
+
+            </style>
+
+        
+
+    </body>
+</html>

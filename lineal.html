@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interpolacion</title>
+    </head>
+    <body>
+        <div class="contenedor">
+            <h1>Interpolacion Lineal</h1>
+        </div>
+        <div id="menu">
+            <ul class="nav">
+                <li><a href="#Conjuntos">Seleccione la interpolacion que desea</a>
+                    <ul>
+                        <li><a href="Interpolacion.html">Menu principal</a></li>
+                        <li><a href="cuadratica.html">Interpolación cuadrática</a></li>
+                        <li><a href="polinomio.html">Polinomios de interpolación de Lagrange</a></li>
+                    </ul>
+                </li>
+                                       
+            </ul>
+        </div>
+        
+        <br><br><br><br>
+        
+        <label for="n">X:</label>
+        <input type="number" id="x"><br><br>
+
+        <label for="n">X0:</label>
+        <input type="number" id="x0">
+        <label for="f">f(x0):</label>
+        <input type="number" id="fx0"><br><br>
+
+        <label for="n">X1:</label>
+        <input type="number" id="x1">
+        <label for="f">f(x1):</label>
+        <input type="number" id="fx1"><br><br>
+       
+
+        
+
+        <label>f(x): <input type="number" id="res" readonly></label><br><br>
+
+        <h2>Porcentaje de error</h2>
+        <label for="v">Valor exacto de f(x):</label>
+        <input type="number" id="ve"><br><br>
+
+        
+        <label>Porcentaje de error: <input type="number" id="res2" readonly></label><br><br>
+        <input type="button" id="C" value="Calcular" onclick="calculoil()"><br><br>
+
+        <script>
+            function calculoil(){
+                let fx;
+                let x=parseFloat(document.getElementById("x").value);
+                let fx0=parseFloat(document.getElementById("fx0").value);
+                let x0=parseFloat(document.getElementById("x0").value);
+                let fx1=parseFloat(document.getElementById("fx1").value);
+                let x1=parseFloat(document.getElementById("x1").value);
+                fx=fx0+((fx1-fx0)/(x1-x0))*(x-x0);
+
+                document.getElementById("res").value=fx;
+
+                let errorporc,errorver;
+                let ve=parseFloat(document.getElementById("ve").value);
+
+                errorver=ve-fx;
+                errorporc=(errorver/ve)*100;
+
+                document.getElementById("res2").value=errorporc;  
+            }
+            /*function calculoerror(){
+                let fx;
+                let x=parseFloat(document.getElementById("x").value);
+                let fx0=parseFloat(document.getElementById("fx0").value);
+                let x0=parseFloat(document.getElementById("x0").value);
+                let fx1=parseFloat(document.getElementById("fx1").value);
+                let x1=parseFloat(document.getElementById("x1").value);
+                fx=fx0+((fx1-fx0)/(x1-x0))*(x-x0);
+
+                let errorporc,errorver;
+                let ve=parseFloat(document.getElementById("ve").value);
+
+                errorver=ve-fx;
+                errorporc=(errorver/ve)*100;
+
+                document.getElementById("res2").value=errorporc;  
+            }*/
+        </script>
+        <style>
+        .contenedor{
+            background: #ff8c91;
+            padding: 1em;
+            text-align: center;
+            color: white;
+        }
+        body{
+            text-align: center;
+        }
+        #menu {
+                width: 500px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+
+            ul, ol{
+                list-style: none;
+            }
+            .nav li a {
+                background-color: #ff8c91;
+                color: #fff;
+                text-decoration: none;
+                padding: 10px 15px;
+                display: block;
+            }
+            .nav li a:hover{
+                background-color: #ffc4a6;
+            }
+            .nav > li {
+                float: left;
+            }
+            .nav li ul {
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .nav li:hover > ul {
+                display: block;
+            }
+            .nav li ul li{
+                position: relative;
+            }
+            .nav li ul li ul {
+                right: -140px;
+                top: 0px;
+            }
+            #imagen{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0px;
+                height: 100vh;
+            }
+
+        </style>
+        
+
+        
+    </body>
+</html>

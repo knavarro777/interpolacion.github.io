@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Interpolacion</title>
+    </head>
+    <body>
+        <div class="contenedor">
+            <h1>Polinomios de interpolación de Lagrange</h1>
+        </div>
+        <div id="menu">
+            <ul class="nav">
+                <li><a href="#Conjuntos">Seleccione la interpolacion que desea</a>
+                    <ul>
+                        <li><a href="Interpolacion.html">Menu principal</a></li>
+                        <li><a href="lineal.html">Interpolación lineal</a></li>
+                        <li><a href="cuadratica.html">Interpolación cuadrática</a></li>
+                    </ul>
+                </li>
+                                       
+            </ul>
+        </div>
+       <br> <br> <br> 
+
+
+        <h2>Primer orden</h2>
+        
+        <label for="n">X:</label>
+        <input type="text" id="x"><br><br>
+
+        <label for="n">X0:</label>
+        <input type="text" id="x0">
+        <label for="f">f(x0):</label>
+        <input type="text" id="fx0"><br><br>
+
+        <label for="n">X1:</label>
+        <input type="text" id="x1">
+        <label for="f">f(x1):</label>
+        <input type="text" id="fx1"><br><br>
+       
+
+        
+
+        <label>f1(x): <input type="number" id="res" readonly></label>
+
+        <h3>Porcentaje de error</h3>
+        <label for="v">Valor exacto de f(x):</label>
+        <input type="text" id="ve"><br><br>
+
+        
+        <label>Porcentaje de error: <input type="number" id="res3" readonly></label><br><br>
+        <input type="button" id="C" value="Calcular" onclick="calculoppo()"><br><br>
+
+        <script>
+            function calculoppo(){
+                let fx;
+                let x=parseFloat(document.getElementById("x").value);
+                let fx0=parseFloat(document.getElementById("fx0").value);
+                let x0=parseFloat(document.getElementById("x0").value);
+                let fx1=parseFloat(document.getElementById("fx1").value);
+                let x1=parseFloat(document.getElementById("x1").value);
+
+                fx=fx0*((x-x1)/(x0-x1))+fx1*((x-x0)/(x1-x0));
+
+                document.getElementById("res").value=fx;
+                let errorporc,errorver;
+                let ve=parseFloat(document.getElementById("ve").value);
+
+                errorver=ve-fx;
+                errorporc=(errorver/ve)*100;
+
+                document.getElementById("res3").value=errorporc;
+            }
+        </script>
+        <h2>Segundo orden</h2>
+
+        <label for="n">X:</label>
+        <input type="text" id="x2">
+        <br><br>
+
+        <label for="n">X0:</label>
+        <input type="text" id="x02">
+        <label for="f">f(x0):</label>
+        <input type="text" id="fx02"><br><br>
+
+        <label for="n">X1:</label>
+        <input type="text" id="x12">
+        <label for="f">f(x1):</label>
+        <input type="text" id="fx12"><br><br>
+
+        <label for="n">X2:</label>
+        <input type="text" id="x22">
+        <label for="f">f(x2):</label>
+        <input type="text" id="fx22"><br><br>
+
+        
+       
+
+        <label>f2(x): <input type="number" id="res2" readonly></label>
+        <h3>Porcentaje de error</h3>
+        <label for="v1">Valor exacto de f(x):</label>
+        <input type="text" id="v1"><br><br>
+
+        
+        <label>Porcentaje de error: <input type="number" id="res4" readonly></label><br><br>
+
+        <input type="button" id="C2" value="Calcular" onclick="calculopso()"><br><br>
+
+        <script>
+            function calculopso(){
+                let fx;
+                let x=parseFloat(document.getElementById("x2").value);
+                let fx0=parseFloat(document.getElementById("fx02").value);
+                let x0=parseFloat(document.getElementById("x02").value);
+                let fx1=parseFloat(document.getElementById("fx12").value);
+                let x1=parseFloat(document.getElementById("x12").value);
+                let fx2=parseFloat(document.getElementById("fx22").value);
+                let x2=parseFloat(document.getElementById("x22").value);
+            
+                
+                b1=(fx1-fx0)/(x1-x0);
+
+                b2=((fx2-fx1)/(x2-x1)-(fx1-fx0)/(x1-x0))/(x2-x0);
+
+                fx=fx0*((x-x1)/(x0-x1)*(x-x2)/(x0-x2))+fx1*((x-x0)/(x1-x0)*(x-x2)/(x1-x2))+fx2*((x-x0)/(x2-x0)*(x-x1)/(x2-x1));
+                document.getElementById("res2").value=fx;
+
+
+                let errorporc,errorver;
+                let ve=parseFloat(document.getElementById("v1").value);
+
+                errorver=ve-fx;
+                errorporc=(errorver/ve)*100;
+
+                document.getElementById("res4").value=errorporc;
+                
+            }
+        </script>
+        <style>
+            .contenedor{
+                background: #6d165a;
+                padding: 1em;
+                text-align: center;
+                color: white;
+            }
+            h2{
+                text-align: center;
+            }
+            body{
+                text-align: center;
+            }
+            #menu {
+                width: 500px;
+                font-family: Arial, Helvetica, sans-serif;
+                text-align: center;
+            }
+
+            ul, ol{
+                list-style: none;
+            }
+            .nav li a {
+                background-color: #6d165a;
+                color: #fff;
+                text-decoration: none;
+                padding: 10px 15px;
+                display: block;
+            }
+            .nav li a:hover{
+                background-color: #ffc4a6;
+            }
+            .nav > li {
+                float: left;
+            }
+            .nav li ul {
+                display: none;
+                position: absolute;
+                min-width: 140px;
+            }
+            .nav li:hover > ul {
+                display: block;
+            }
+            .nav li ul li{
+                position: relative;
+            }
+            .nav li ul li ul {
+                right: -140px;
+                top: 0px;
+            }
+            #imagen{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding: 0px;
+                height: 100vh;
+            }
+
+            </style>
+        
+    </body>
+</html>
